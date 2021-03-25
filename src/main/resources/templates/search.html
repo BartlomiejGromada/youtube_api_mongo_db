@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search channel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}" href="../static/style.css"/>
+</head>
+<body>
+<div>
+    <a th:href="@{search}">
+        <img th:src="@{youtubeLogo.png}" src="../static/youtubeLogo.png" alt="youtubeLogo" id="youtubeLogo"/></a>
+    <form th:method="post" th:action="@{/search}">
+        <label for="channelId">Channel id</label>
+        <input type="text" placeholder="UCx7yazJU724bt8315qDSikQ" th:name="channelId" id="channelId" autofocus/>
+        <input type="submit" th:name="Search" th:value="Search"/>
+    </form>
+</div>
+<div class="resultSearch">
+    <table th:if="${channel}">
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${channel}">
+            <td><a th:href="${channel.url}">URL</a></td>
+            <td th:text="*{title}">FC Barcelona</td>
+            <td th:text="*{description}">FIRST SPORTS TEAM IN THE WORLD TO REACH 10 MILLION SUBSCRIBERS ON @YOUTUBE!
+                ❤️ Welcome to FC Barcelona's official YouTube ...
+            </td>
+            <td><img th:src="*{imageURL}" src="../static/fcbar.jpg" alt="Image channel" id="channelImage"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${notResult}" id="notResult" class="resultSearch">
+        <p id="notFoundIdFirst" th:text="|Channel with id: ${channelId} no exist|">Channel doesn't exist</p>
+    </div>
+</div>
+<form th:if="${channel}" th:method="post" th:action="@{add}" th:object="${channel}">
+    <input type="hidden" th:name="url" th:value="*{url}" />
+    <input type="hidden" th:name="title" th:value="*{title}" />
+    <input type="hidden" th:name="description" th:value="*{description}" />
+    <input type="hidden" th:name="imageURL" th:value="*{imageURL}" />
+    <input type="submit" th:value="Save" id="saveButton"/>
+</form>
+</body>
+</html>
