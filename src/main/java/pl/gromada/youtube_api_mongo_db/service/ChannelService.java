@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 @Service
 public class ChannelService {
 
-    private static final Logger logger = Logger.getLogger(ChannelService.class.getName());
     private static final String YOUTUBE_SEARCH_FIELDS =
             "items(id,snippet/title,snippet/description,snippet/thumbnails/medium/url)";
     private static final String URL_YT_BEGINNING = "https://www.youtube.com/channel/";
@@ -42,7 +41,6 @@ public class ChannelService {
             //what we want to get
             YouTube.Search.List search = youTube.search().list("id,snippet");
 
-            System.out.println(apiKey);
             //set credentials
             search.setKey(apiKey);
 
@@ -80,5 +78,13 @@ public class ChannelService {
 
     public void saveChannel(Channel channel) {
         channelRepository.save(channel);
+    }
+
+    public List<Channel> findAllChannels() {
+        return channelRepository.findAll();
+    }
+
+    public void deleteChannelById(String id) {
+        channelRepository.deleteById(id);
     }
 }

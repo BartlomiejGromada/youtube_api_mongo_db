@@ -1,6 +1,6 @@
 body {
     margin: auto;
-    width: 50%;
+    width: 100%;
     font-family: "Copperplate Gothic Bold", sans-serif;
 }
 
@@ -8,25 +8,23 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-    width: 40%;
-    height: 40%;
+    margin-top: 5%;
+    width: 20%;
+    height: 20%;
     -webkit-filter: drop-shadow(5px 5px 5px #222 );
     filter: drop-shadow(5px 5px 5px #222);
 }
 
 form {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 5%;
 }
 
 input[type=text] {
     display: inline-block;
-    width: 80%;
+    width: 35%;
     padding: 15px 22px;
-    margin: 5px 5px;
+    margin-left: 27%;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 3px #191919;
     border: none;
@@ -36,13 +34,13 @@ input[type=text] {
 label {
     display: block;
     font-weight: bold;
-    font-size: 150%;
-    margin: 5px 5px;
+    margin-left: 27%;
+    font-size: 120%;
 }
 
 input[type=submit] {
     display: inline-block;
-    width: 12%;
+    width: 6%;
     padding: 15px 22px;
     margin-left: 10px;
     margin-top: 5px;
@@ -67,27 +65,31 @@ input[type=submit]:hover {
     RESULT SEARCH STYLE
  */
 
-.resultSearch {
+.divResult {
     display: block;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    width: 40%;
+    padding: 10px 15px;
     border-radius: 15px;
+    background-color: black;
     box-shadow: 5px 5px 5px #191919;
 }
 
-.resultSearch > p {
-    margin-top: 60px;
-    font-size: 20px;
-    background-color: black;
+.divResult > p {
+    font-size: 15px;
     color: white;
-    padding: 15px;
-    border-radius: 15px;
     text-align: center;
+    margin-left: 5px;
 }
 
 table {
     table-layout: fixed;
-    width: 100%;
-    margin-top: 100px;
+    width: 60%;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
     border: 7px solid black;
     padding-bottom: 10px;
 }
@@ -115,8 +117,9 @@ td {
     background-color: black;
     padding: 15px 22px;
     display: block;
-    width: 50%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
     border-radius: 10px;
 }
 

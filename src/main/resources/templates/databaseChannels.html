@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Channels</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles/navbarStyle.css" th:href="@{/styles/navbarStyle.css}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/databaseChannelsStyle.css"
+          th:href="@{/styles/databaseChannelsStyle.css}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/searchStyle.css"
+          th:href="@{/styles/searchStyle.css}">
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="channel :${channels}" th:object="${channel}">
+            <td><a th:href="${channel.url}">URL</a></td>
+            <td th:text="*{title}">FC Barcelona</td>
+            <td th:text="*{description}">FIRST SPORTS TEAM IN THE WORLD TO REACH 10 MILLION SUBSCRIBERS ON @YOUTUBE!
+                ❤️ Welcome to FC Barcelona's official YouTube ...
+            </td>
+            <td><img th:src="*{imageURL}" src="../static/images/fcbar.jpg" alt="Image channel" id="channelImage"/></td>
+            <td><a href="#" th:href="@{channels/delete/{id}(id=${channel.id})}">
+                <img src="../static/images/del.png" th:src="@{/images/del.png}" alt="Delete icon" id="deleteIcon"/></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${message}" class="divResult">
+    <p th:text="${message}">Channel deleted</p>
+</div>
+</body>
+</html>

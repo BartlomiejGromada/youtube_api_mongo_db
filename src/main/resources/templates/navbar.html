@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles/navbarStyle.css"
+          th:href="@{/styles/navbarStyle.css}"/>
+</head>
+<body>
+<div class="topNav" th:fragment="navbar">
+    <a th:href="@{search}"
+       th:class="${#strings.contains(#httpServletRequest.requestURI, 'search')}? 'active'">Search</a>
+    <a th:href="@{channels}" th:class="${#strings.contains(#httpServletRequest.requestURI, 'channels')}? 'active'">Channels</a>
+</div>
+</body>
+</html>

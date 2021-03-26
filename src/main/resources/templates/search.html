@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Search channel</title>
-    <link rel="stylesheet" type="text/css" th:href="@{style.css}" href="../static/style.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/searchStyle.css}" href="../static/styles/searchStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/styles/navbarStyle.css" th:href="@{/styles/navbarStyle.css}"/>
 </head>
 <body>
+<div th:replace="navbar :: navbar"></div>
 <div>
     <a th:href="@{search}">
-        <img th:src="@{youtubeLogo.png}" src="../static/youtubeLogo.png" alt="youtubeLogo" id="youtubeLogo"/></a>
+        <img th:src="@{/images/youtubeLogo.png}" src="../static/images/youtubeLogo.png" alt="youtubeLogo" id="youtubeLogo"/></a>
     <form th:method="post" th:action="@{/search}">
         <label for="channelId">Channel id</label>
         <input type="text" placeholder="UCx7yazJU724bt8315qDSikQ" th:name="channelId" id="channelId" autofocus/>
         <input type="submit" th:name="Search" th:value="Search"/>
     </form>
 </div>
-<div class="resultSearch">
-    <table th:if="${channel}">
+<div th:if="${channel}">
+    <table>
         <thead>
         <tr>
             <th>URL</th>
@@ -32,20 +34,25 @@
             <td th:text="*{description}">FIRST SPORTS TEAM IN THE WORLD TO REACH 10 MILLION SUBSCRIBERS ON @YOUTUBE!
                 ❤️ Welcome to FC Barcelona's official YouTube ...
             </td>
-            <td><img th:src="*{imageURL}" src="../static/fcbar.jpg" alt="Image channel" id="channelImage"/></td>
+            <td><img th:src="*{imageURL}" src="../static/images/fcbar.jpg" alt="Image channel" id="channelImage"/></td>
         </tr>
         </tbody>
     </table>
 
-    <div th:if="${notResult}" id="notResult" class="resultSearch">
-        <p id="notFoundIdFirst" th:text="|Channel with id: ${channelId} no exist|">Channel doesn't exist</p>
+    <div class="divResult" th:if="${message}">
+        <p th:text="${message}">Channel has been added</p>
     </div>
 </div>
-<form th:if="${channel}" th:method="post" th:action="@{add}" th:object="${channel}">
-    <input type="hidden" th:name="url" th:value="*{url}" />
-    <input type="hidden" th:name="title" th:value="*{title}" />
-    <input type="hidden" th:name="description" th:value="*{description}" />
-    <input type="hidden" th:name="imageURL" th:value="*{imageURL}" />
+
+<div th:if="${notResult}" class="divResult">
+    <p id="notFoundIdFirst" th:text="|Channel with id: ${channelId} no exist|">Channel doesn't exist</p>
+</div>
+
+<form th:if="${channel}" th:method="post" th:action="@{/add}" th:object="${channel}">
+    <input type="hidden" th:name="url" th:value="*{url}"/>
+    <input type="hidden" th:name="title" th:value="*{title}"/>
+    <input type="hidden" th:name="description" th:value="*{description}"/>
+    <input type="hidden" th:name="imageURL" th:value="*{imageURL}"/>
     <input type="submit" th:value="Save" id="saveButton"/>
 </form>
 </body>
