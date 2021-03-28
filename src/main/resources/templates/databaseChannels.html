@@ -12,13 +12,16 @@
 <body>
 <div th:replace="navbar :: navbar"></div>
 <div>
-    <table>
+    <table id="tableChannels">
         <thead>
         <tr>
             <th>URL</th>
             <th>Name</th>
             <th>Description</th>
             <th>Image</th>
+            <th>View count</th>
+            <th>Subscriber count</th>
+            <th>Video count</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -30,6 +33,9 @@
                 ❤️ Welcome to FC Barcelona's official YouTube ...
             </td>
             <td><img th:src="*{imageURL}" src="../static/images/fcbar.jpg" alt="Image channel" id="channelImage"/></td>
+            <td th:text="*{channelStatistics.viewCount}">20120</td>
+            <td th:text="*{channelStatistics.subscriberCount}">211223</td>
+            <td th:text="*{channelStatistics.videoCount}">121</td>
             <td><a href="#" th:href="@{channels/delete/{id}(id=${channel.id})}">
                 <img src="../static/images/del.png" th:src="@{/images/del.png}" alt="Delete icon" id="deleteIcon"/></a>
             </td>

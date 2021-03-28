@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.gromada.youtube_api_mongo_db.model.Channel;
+import pl.gromada.youtube_api_mongo_db.model.ChannelStatistics;
 import pl.gromada.youtube_api_mongo_db.service.ChannelService;
 
 import java.util.List;
@@ -39,7 +40,9 @@ public class ChannelController {
     }
 
     @PostMapping("/add")
-    public String addChannel(@ModelAttribute Channel channel, RedirectAttributes redirectAttributes) {
+    public String addChannel(@ModelAttribute Channel channel, @ModelAttribute ChannelStatistics channelStatistics,
+                             RedirectAttributes redirectAttributes) {
+        channel.setChannelStatistics(channelStatistics);
         channelService.saveChannel(channel);
         redirectAttributes.addFlashAttribute("message", "Channel has been added to database");
         return "redirect:/search";

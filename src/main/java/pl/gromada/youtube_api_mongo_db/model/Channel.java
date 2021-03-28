@@ -18,6 +18,5 @@ public class Channel {
     private String title;
     private String description;
     private String imageURL;
-//  private String subscriberCount;
-//  private String videoCount;
+    private ChannelStatistics channelStatistics;
 }

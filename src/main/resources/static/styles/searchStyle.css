@@ -69,7 +69,7 @@ input[type=submit]:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 60px;
+    margin-top: 40px;
     width: 40%;
     padding: 10px 15px;
     border-radius: 15px;
@@ -87,11 +87,9 @@ input[type=submit]:hover {
 table {
     table-layout: fixed;
     width: 60%;
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 7px solid black;
-    padding-bottom: 10px;
+    border: 5px solid black;
+    padding-bottom: 20px;
+    margin: 40px auto 30px;
 }
 
 th {
@@ -100,7 +98,8 @@ th {
 }
 
 td {
-    width: 25%;
+    width: 30%;
+    padding: 10px;
     text-align: center;
 }
 
@@ -126,4 +125,10 @@ td {
 #saveButton:hover {
     background-color: #191919;
     filter: brightness(120%);
+}
+
+#saveForm {
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 20px;
 }
